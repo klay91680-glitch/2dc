@@ -18,7 +18,6 @@
             position: fixed;
         }
 
-        /* iframe ကို ချုံ့ပြဖို့ container */
         .zoom-box {
             position: fixed;
             top: 0;
@@ -32,15 +31,22 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 133.33%;      /* 100 / 0.75 */
+            height: 133.33%;
             border: none;
-            /* ချုံ့ခြင်း (ချိန်ညှိရမယ်) */
             transform: scale(0.75);
             transform-origin: top left;
-            /* scale လုပ်ရင် width ကို ပြန်ချဲ့ရမယ် */
-            width: 133.33%;        /* 100 / 0.75 */
-            height: 133.33%;
+        }
+
+        /* အောက်ဆုံး ကြော်ငြာဖုံးရန် */
+        .cover {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 12%;          /* ကြော်ငြာဖုံး */
+            background: #fff;
+            z-index: 9999;
         }
     </style>
 </head>
@@ -52,5 +58,6 @@
             scrolling="no">
         </iframe>
     </div>
+    <div class="cover"></div>
 </body>
 </html>
