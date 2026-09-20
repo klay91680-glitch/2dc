@@ -14,15 +14,43 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
+            background: #fff;
+            position: fixed;
         }
-        iframe {
+
+        /* iframe ကို ချုံ့ပြဖို့ container */
+        .zoom-box {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .zoom-box iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             border: none;
+            /* ချုံ့ခြင်း (ချိန်ညှိရမယ်) */
+            transform: scale(0.75);
+            transform-origin: top left;
+            /* scale လုပ်ရင် width ကို ပြန်ချဲ့ရမယ် */
+            width: 133.33%;        /* 100 / 0.75 */
+            height: 133.33%;
         }
     </style>
 </head>
 <body>
-    <iframe src="https://dubai2dnew.netlify.app/" allowfullscreen></iframe>
+    <div class="zoom-box">
+        <iframe 
+            src="https://dubai2dnew.netlify.app/" 
+            allowfullscreen
+            scrolling="no">
+        </iframe>
+    </div>
 </body>
 </html>
