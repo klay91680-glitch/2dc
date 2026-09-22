@@ -16,32 +16,57 @@
 
         .cover { position: fixed; bottom: 0; left: 0; width: 100%; height: 18%; background: #fff; z-index: 9999; }
 
-        /* ညာအောက်အလယ် ခလုတ်ဒီဇိုင်း */
+        /* ရွှေရောင်နဲ့ မီးလက်နေတဲ့ ခလုတ်ဒီဇိုင်း */
         .thai-icon {
             position: fixed; 
-            bottom: 20%;  /* အောက်ကနေ 20% မြှင့်ထားတယ် (ကြော်ငြာအကွက်ရဲ့ အပေါ်မှာ) */
-            left: 50%;    /* အလယ်ကို ရောက်အောင် */
-            transform: translateX(-50%); /* အလယ်တည့်တည့်ဖြစ်အောင် ပြန်ချိန် */
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 10000;
             display: flex; align-items: center; justify-content: center;
-            background: linear-gradient(135deg, #ff4757, #ff6b81);
-            color: #fff; padding: 10px 20px; border-radius: 30px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            /* အနီရောင်နဲ့ ရွှေရောင် အရောအနှော */
+            background: linear-gradient(135deg, #d32f2f, #ff5252, #ffab00);
+            color: #fff; 
+            padding: 12px 24px; 
+            border-radius: 50px;
+            box-shadow: 0 0 15px rgba(255, 193, 7, 0.8), 0 0 30px rgba(255, 82, 82, 0.6);
             cursor: pointer; text-decoration: none;
-            font-family: Arial, sans-serif; font-weight: bold; font-size: 14px;
-            transition: transform 0.2s, box-shadow 0.2s; border: 2px solid #fff;
-            animation: pulse 2s infinite;
+            font-family: Arial, sans-serif; font-weight: bold; font-size: 15px;
+            transition: all 0.3s ease-in-out; 
+            border: 2px solid #ffd700; /* ရွှေရောင်ဘောင် */
+            animation: pulse 1.5s infinite alternate; /* မီးလက်နေတဲ့ ပုံစံ */
             white-space: nowrap;
         }
 
-        .thai-icon:hover { transform: translateX(-50%) scale(1.1); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); }
-        .thai-icon:active { transform: translateX(-50%) scale(0.95); }
-        .thai-icon span { margin-left: 5px; font-size: 12px; color: #ffeaa7; }
+        /* စာသားကို ရွှေရောင်ပေးထားတယ် */
+        .thai-icon span {
+            color: #ffd700; 
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
+            margin-left: 8px;
+        }
 
+        /* နှိပ်လိုက်ရင် ရွှေရောင်အပြည့်ဖြစ်သွားစေရန် */
+        .thai-icon:active {
+            background: #ffd700;
+            color: #d32f2f;
+            transform: translateX(-50%) scale(0.95);
+            box-shadow: 0 0 25px #ffd700;
+        }
+        .thai-icon:active span {
+            color: #d32f2f;
+            text-shadow: none;
+        }
+
+        /* မီးလက်နေတဲ့ Animation */
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(255, 71, 87, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0); }
+            0% { 
+                box-shadow: 0 0 10px rgba(255, 193, 7, 0.6), 0 0 20px rgba(255, 82, 82, 0.4); 
+                border-color: #ffd700;
+            }
+            100% { 
+                box-shadow: 0 0 20px rgba(255, 193, 7, 1), 0 0 40px rgba(255, 82, 82, 0.8); 
+                border-color: #fff;
+            }
         }
     </style>
 </head>
@@ -50,9 +75,9 @@
         <iframe src="https://dubai2dnew.netlify.app/" allowfullscreen scrolling="no"></iframe>
     </div>
     
-    <!-- အောက်အလယ် ခလုတ် -->
+    <!-- အောက်အလယ် ရွှေရောင်မီးလက်နေတဲ့ ခလုတ် -->
     <a href="https://www.thaistock2d.com/" class="thai-icon">
-        🇹🇭 Thailand 2D
+        🇹🇭 <span>Thailand 2D</span>
     </a>
 
     <div class="cover"></div>
