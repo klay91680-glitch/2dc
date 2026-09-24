@@ -98,17 +98,17 @@
             z-index: 9999;
         }
 
-        /* Thailand 2D ခလုတ် - ပုံမှန်အခြေအနေမှာ အောက်ခံအဖြူရောင် */
+        /* Thailand 2D ခလုတ် - ချုံ့ပြီး အောက်ကို ရွှေ့ထားသည် */
         .thai-icon {
             position: fixed; 
-            bottom: 8%; 
+            bottom: 4%; /* အောက်ကို နည်းနည်းဆင်းသွားသည် */
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-50%) scale(0.85); /* ချုံ့ထားသည် */
             z-index: 10000;
             display: flex; align-items: center; justify-content: center;
             background: #ffffff; /* ပုံမှန် အောက်ခံအဖြူရောင် */
             color: #fff; 
-            padding: 12px 24px; 
+            padding: 10px 20px; /* Padding ကို နည်းနည်းလျှော့ထားသည် */
             border-radius: 50px;
             box-shadow: 0 0 15px rgba(255, 193, 7, 0.8), 0 0 30px rgba(255, 82, 82, 0.6);
             cursor: pointer; text-decoration: none;
@@ -119,25 +119,26 @@
             white-space: nowrap;
         }
 
-        /* Thailand 2D စာသား - အစိမ်းရောင် */
+        /* Thailand 2D စာသား - ရွှေရောင် တောက်ပ */
         .thai-icon span {
-            color: #00aa00; 
-            text-shadow: 0 0 5px rgba(0, 170, 0, 0.5);
+            color: #ffd700; /* ရွှေရောင် */
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.9), 0 0 15px rgba(255, 193, 7, 0.7); /* တောက်ပမှု */
             margin-left: 8px;
+            font-weight: 900;
         }
 
         /* နှိပ်လိုက်တဲ့အခါ (Active) - အနီရင့် + လိမ္မော်ရောင် */
         .thai-icon:active {
             background: linear-gradient(135deg, #d32f2f, #ffab00);
             color: #fff;
-            transform: translateX(-50%) scale(0.95);
+            transform: translateX(-50%) scale(0.8); /* နှိပ်လိုက်ရင် နည်းနည်းပိုချုံ့သွားမယ် */
             box-shadow: 0 0 25px #ffd700;
         }
         
         /* နှိပ်လိုက်တဲ့အခါ စာသားအရောင် မပြောင်းစေရန် */
         .thai-icon:active span {
-            color: #00aa00;
-            text-shadow: 0 0 5px rgba(0, 170, 0, 0.5);
+            color: #ffd700;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.9), 0 0 15px rgba(255, 193, 7, 0.7);
         }
 
         @keyframes pulse {
@@ -182,4 +183,4 @@
     </a>
 
 </body>
-</html>
+        </html>
