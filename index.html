@@ -87,28 +87,26 @@
             z-index: 9999;
         }
 
-        /* အောက်ခံ အရောင် (3D မီးခိုးရောင် ပုံစံ) - အနက်ရောင်မျဉ်းကို ဖျောက်ထားသည် */
+        /* အောက်ခံ အရောင် (အဖြူရောင်) */
         .bottom-bg {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
             height: 17%;
-            background: #ffffff; /* အဖြူရောင် */
+            background: #ffffff;
             z-index: 9999;
-            /* border-top ကို ဖျက်လိုက်ပါပြီ (အနက်ရောင်မျဉ်း မပေါ်စေရန်) */
-            /* box-shadow ကိုလည်း ဖျက်လိုက်ပါပြီ (အရိပ် မပေါ်စေရန်) */
         }
 
-        /* Thailand 2D ခလုတ် - အောက်ကို နည်းနည်းရွှေ့ထားသည် */
+        /* Thailand 2D ခလုတ် - ပုံမှန်အခြေအနေမှာ အောက်ခံအဖြူရောင် */
         .thai-icon {
             position: fixed; 
-            bottom: 8%; /* ၉% ကနေ ၈% ကို ရွှေ့လိုက်ပါပြီ (အောက်ကို နည်းနည်းဆင်းသွားသည်) */
+            bottom: 8%; 
             left: 50%;
             transform: translateX(-50%);
             z-index: 10000;
             display: flex; align-items: center; justify-content: center;
-            background: linear-gradient(135deg, #ff5252, #d32f2f, #ffab00);
+            background: #ffffff; /* ပုံမှန် အောက်ခံအဖြူရောင် */
             color: #fff; 
             padding: 12px 24px; 
             border-radius: 50px;
@@ -121,21 +119,25 @@
             white-space: nowrap;
         }
 
+        /* Thailand 2D စာသား - အစိမ်းရောင် */
         .thai-icon span {
-            color: #ffd700; 
-            text-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
+            color: #00aa00; 
+            text-shadow: 0 0 5px rgba(0, 170, 0, 0.5);
             margin-left: 8px;
         }
 
+        /* နှိပ်လိုက်တဲ့အခါ (Active) - အနီရင့် + လိမ္မော်ရောင် */
         .thai-icon:active {
-            background: #ffd700;
-            color: #d32f2f;
+            background: linear-gradient(135deg, #d32f2f, #ffab00);
+            color: #fff;
             transform: translateX(-50%) scale(0.95);
             box-shadow: 0 0 25px #ffd700;
         }
+        
+        /* နှိပ်လိုက်တဲ့အခါ စာသားအရောင် မပြောင်းစေရန် */
         .thai-icon:active span {
-            color: #d32f2f;
-            text-shadow: none;
+            color: #00aa00;
+            text-shadow: 0 0 5px rgba(0, 170, 0, 0.5);
         }
 
         @keyframes pulse {
@@ -171,7 +173,7 @@
     <!-- အပေါ်ပိုင်း ဖုံးအုပ်ရန် (အဖြူရောင်) -->
     <div class="top-overlay"></div>
 
-    <!-- အောက်ပိုင်း (မီးခိုးရောင် 3D အောက်ခံ) -->
+    <!-- အောက်ပိုင်း (အဖြူရောင် အောက်ခံ) -->
     <div class="bottom-bg"></div>
 
     <!-- Thailand 2D ခလုတ် -->
@@ -180,4 +182,4 @@
     </a>
 
 </body>
-    </html>
+</html>
