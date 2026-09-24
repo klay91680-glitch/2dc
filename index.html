@@ -98,15 +98,15 @@
             z-index: 9999;
         }
 
-        /* Thailand 2D ခလုတ် - ညာဘက်နဲ့ အပေါ်ကို နည်းနည်းရွှေ့ထားသည် */
+        /* Thailand 2D ခလုတ် - ဘယ်ဘက်ရွှေ့ပြီး Dubai 3D အောက်မှာထားသည် */
         .thai-icon {
             position: fixed; 
-            bottom: 10%; /* အောက်ကို ၄% ကနေ ၁၀% ကို တင်လိုက်ပါပြီ (အပေါ်ကို နည်းနည်းတက်သွားသည်) */
-            left: 60%; /* ၅၀% ကနေ ၆၀% ကို တင်လိုက်ပါပြီ (ညာဘက်ကို နည်းနည်းရွှေ့သွားသည်) */
-            transform: translateX(-50%) scale(0.85); /* ချုံ့ထားသည် */
+            bottom: 10%; 
+            left: 50%; /* ၆၀% ကနေ ၅၀% ကို ပြန်ရွှေ့လိုက်ပါပြီ (ဘယ်ဘက်ကို ရောက်သွားသည်) */
+            transform: translateX(-50%) scale(0.85); 
             z-index: 10000;
             display: flex; align-items: center; justify-content: center;
-            background: #ffffff; /* အောက်ခံအဖြူ */
+            background: #ffffff; 
             color: #fff; 
             padding: 10px 20px; 
             border-radius: 50px;
@@ -121,7 +121,7 @@
 
         /* Thailand 2D စာသား - အနီရောင် */
         .thai-icon span {
-            color: #d32f2f; /* အနီရောင် */
+            color: #d32f2f; 
             text-shadow: 0 0 5px rgba(211, 47, 47, 0.5);
             margin-left: 8px;
             font-weight: 900;
@@ -135,9 +135,9 @@
             box-shadow: 0 0 25px #ffd700;
         }
         
-        /* နှိပ်လိုက်တဲ့အခါ စာသားအရောင် အနီရောင် ပြောင်းသွားမည် */
+        /* နှိပ်လိုက်တဲ့အခါ စာသားအရောင် ရွှေရောင် ဖြစ်သွားမည် */
         .thai-icon:active span {
-            color: #ffd700; /* နှိပ်လိုက်ရင် စာသားက ရွှေရောင် ဖြစ်သွားမယ် */
+            color: #ffd700; 
             text-shadow: 0 0 8px rgba(255, 215, 0, 0.9);
         }
 
@@ -183,4 +183,4 @@
     </a>
 
 </body>
-    </html>
+</html>
