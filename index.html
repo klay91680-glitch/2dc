@@ -3,28 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dubai 3D</title>
+    <title>Dubai 2D</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body, html { width: 100%; height: 100%; overflow: hidden; background: #fff; position: fixed; }
 
-        .zoom-box { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; overflow: hidden; }
+        /* အပေါ်ပိုင်း ခေါင်းစီးဘား (ခရမ်းပြာရောင်) */
+        .header-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 45px;
+            background-color: #7b8cde; /* ပုံထဲက ခရမ်းပြာရောင် */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 15px;
+            z-index: 10001;
+            font-family: Arial, sans-serif;
+        }
+
+        .header-bar .title {
+            color: #fff;
+            font-weight: bold;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .header-bar .new-badge {
+            color: #00ff00; /* အစိမ်းရောင် NEW */
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* ခေါင်းစီးအောက် SET နဲ့ VALUE စာသား */
+        .sub-header {
+            position: fixed;
+            top: 45px;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            z-index: 10001;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            font-size: 14px;
+            color: #555;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .sub-header span {
+            width: 50%;
+            text-align: center;
+        }
+
+        /* အောက်ခံ iframe နေရာ (ခေါင်းစီးတွေအောက် ရွှေ့ထားတယ်) */
+        .zoom-box { 
+            position: fixed; 
+            top: 85px; /* ခေါင်းစီး ၄၅ + စာသား ၄၀ = ၈၅px အောက်မှာ စတင်ပါမယ် */
+            left: 0; 
+            width: 100vw; 
+            height: calc(100vh - 85px); 
+            overflow: hidden; 
+        }
         .zoom-box iframe {
             position: absolute; top: 0; left: 0; width: 133.33%; height: 133.33%;
             border: none; transform: scale(0.75); transform-origin: top left;
         }
 
-        .cover { position: fixed; bottom: 0; left: 0; width: 100%; height: 18%; background: #fff; z-index: 9999; }
+        /* အပေါ်ပိုင်း ဖုံးအုပ်ရန် (အဖြူရောင်) - ခေါင်းစီးတွေ အောက်မှာ ရှိပါမယ် */
+        .top-overlay {
+            position: fixed;
+            top: 85px; /* ၈၅px အောက်မှာ စဖုံးပါမယ် */
+            left: 0;
+            width: 100%;
+            height: 8%;
+            background: #ffffff;
+            z-index: 9999;
+        }
 
-        /* ရွှေရောင်နဲ့ မီးလက်နေတဲ့ ခလုတ်ဒီဇိုင်း */
+        /* အောက်ခံ အရောင် (3D မီးခိုးရောင် ပုံစံ) */
+        .bottom-bg {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 28%;
+            background: linear-gradient(180deg, #e0e0e0 0%, #bdbdbd 50%, #9e9e9e 100%);
+            z-index: 9999;
+            border-top: 2px solid #757575;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Thailand 2D ခလုတ် */
         .thai-icon {
             position: fixed; 
-            bottom: 20%;
+            bottom: 14%; 
             left: 50%;
             transform: translateX(-50%);
             z-index: 10000;
             display: flex; align-items: center; justify-content: center;
-            /* အနီရောင်နဲ့ ရွှေရောင် အရောအနှော */
             background: linear-gradient(135deg, #d32f2f, #ff5252, #ffab00);
             color: #fff; 
             padding: 12px 24px; 
@@ -33,19 +116,17 @@
             cursor: pointer; text-decoration: none;
             font-family: Arial, sans-serif; font-weight: bold; font-size: 15px;
             transition: all 0.3s ease-in-out; 
-            border: 2px solid #ffd700; /* ရွှေရောင်ဘောင် */
-            animation: pulse 1.5s infinite alternate; /* မီးလက်နေတဲ့ ပုံစံ */
+            border: 2px solid #ffd700;
+            animation: pulse 1.5s infinite alternate;
             white-space: nowrap;
         }
 
-        /* စာသားကို ရွှေရောင်ပေးထားတယ် */
         .thai-icon span {
             color: #ffd700; 
             text-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
             margin-left: 8px;
         }
 
-        /* နှိပ်လိုက်ရင် ရွှေရောင်အပြည့်ဖြစ်သွားစေရန် */
         .thai-icon:active {
             background: #ffd700;
             color: #d32f2f;
@@ -57,7 +138,6 @@
             text-shadow: none;
         }
 
-        /* မီးလက်နေတဲ့ Animation */
         @keyframes pulse {
             0% { 
                 box-shadow: 0 0 10px rgba(255, 193, 7, 0.6), 0 0 20px rgba(255, 82, 82, 0.4); 
@@ -71,15 +151,33 @@
     </style>
 </head>
 <body>
+    <!-- အပေါ်ဆုံး ခေါင်းစီးဘား (ခရမ်းပြာရောင်) -->
+    <div class="header-bar">
+        <div class="title">Dubai 2D</div>
+        <div class="new-badge">NEW</div>
+    </div>
+
+    <!-- SET နဲ့ VALUE စာသား -->
+    <div class="sub-header">
+        <span>SET</span>
+        <span>VALUE</span>
+    </div>
+
+    <!-- Website ပြသည့်နေရာ (ခေါင်းစီးအောက် ရွှေ့ထားသည်) -->
     <div class="zoom-box">
         <iframe src="https://dubai2dnew.netlify.app/" allowfullscreen scrolling="no"></iframe>
     </div>
     
-    <!-- အောက်အလယ် ရွှေရောင်မီးလက်နေတဲ့ ခလုတ် -->
+    <!-- အပေါ်ပိုင်း ဖုံးအုပ်ရန် (အဖြူရောင်) - ခေါင်းစီးတွေ အောက်မှာ ရှိပါမယ် -->
+    <div class="top-overlay"></div>
+
+    <!-- အောက်ပိုင်း (မီးခိုးရောင် 3D အောက်ခံ) -->
+    <div class="bottom-bg"></div>
+
+    <!-- Thailand 2D ခလုတ် -->
     <a href="https://www.thaistock2d.com/" class="thai-icon">
         🇹🇭 <span>Thailand 2D</span>
     </a>
 
-    <div class="cover"></div>
 </body>
-</html>
+        </html>
