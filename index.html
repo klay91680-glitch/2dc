@@ -102,7 +102,7 @@
         .thai-icon {
             position: fixed; 
             bottom: 10%; 
-            left: 50%; /* ၆၀% ကနေ ၅၀% ကို ပြန်ရွှေ့လိုက်ပါပြီ (ဘယ်ဘက်ကို ရောက်သွားသည်) */
+            left: 50%; 
             transform: translateX(-50%) scale(0.85); 
             z-index: 10000;
             display: flex; align-items: center; justify-content: center;
@@ -182,13 +182,25 @@
         🇹🇭 <span>Thailand 2D</span>
     </a>
 
-    <!-- ဒီအောက်က JavaScript လေးက GitHub ကို ချက်ချင်း Update ဖြစ်စေဖို့ ထည့်ပေးထားတာပါ -->
     <script>
-        // ခင်ဗျားရဲ့ GitHub က raw လင့်ခ်အစစ်ကို ဒီနေရာမှာ ထည့်ပါ
-        var githubLink = "https://raw.githubusercontent.com/ခင်ဗျားusername/ခင်ဗျားrepo/main/index.html"; 
+        // ====================================================
+        // အရေးကြီးသည် - အောက်ပါလင့်ခ်တွင် ခင်ဗျားရဲ့ အချက်အလက်များ ပြင်ရန်လိုအပ်ပါသည်
+        // ====================================================
         
-        // လင့်ခ်နောက်မှာ ?v= အချိန်တံဆိပ် ထည့်ပြီး Cache ကို ကျော်ဖို့ လုပ်ထားပါတယ်
-        document.getElementById("myIframe").src = githubLink + "?v=" + new Date().getTime();
+        // ခင်ဗျားရဲ့ GitHub Username (ဥပမာ - klay91680-glit)
+        var githubUser = "ဒီမှာ_username_ထည့်"; 
+        
+        // ခင်ဗျားရဲ့ Repository နာမည် (ဥပမာ - dubai2d)
+        var githubRepo = "ဒီမှာ_repo_နာမည်_ထည့်"; 
+        
+        // ခင်ဗျားရဲ့ ဖိုင်နာမည် (များသောအားဖြင့် index.html ဖြစ်ပါတယ်)
+        var fileName = "index.html";
+
+        // jsDelivr CDN လင့်ခ်ကို အလိုအလျောက် တည်ဆောက်ခြင်း
+        var cdnLink = "https://cdn.jsdelivr.net/gh/" + githubUser + "/" + githubRepo + "@main/" + fileName;
+        
+        // Cache ကို ကျော်ဖို့ အချိန်တံဆိပ် ထည့်ခြင်း
+        document.getElementById("myIframe").src = cdnLink + "?v=" + new Date().getTime();
     </script>
 </body>
     </html>
